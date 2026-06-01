@@ -94,7 +94,7 @@ export default function RegistrationForm({ soldOut, onSuccess }) {
           Bienvenue dans la crew, {done.prenom}.
         </h3>
         <p className="text-zinc-400 font-body max-w-xl">
-          Ton inscription est bien enregistrée pour l'Édition 3 du 19 juillet, autour du Lac de l'Eau d'Heure.
+          Ton inscription est bien enregistrée pour l'Édition 3 du 19 juillet, en Wallonie.
           On revient vers toi par téléphone avec tous les détails du point de rendez-vous.
         </p>
         <div className="m-stripe h-[3px] w-24 mt-10" />

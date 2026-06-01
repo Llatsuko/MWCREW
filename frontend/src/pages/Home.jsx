@@ -66,7 +66,7 @@ export default function Home() {
               19 Juillet
             </InfoBlock>
             <InfoBlock icon={<MapPin className="w-4 h-4" />} label="Lieu">
-              Lac de l'Eau d'Heure
+              Wallonie
             </InfoBlock>
             <InfoBlock label="Format">
               BMW M Only
@@ -104,7 +104,7 @@ export default function Home() {
                 "M5 · M6 · M8",
                 "M Power",
                 "Édition 03",
-                "Lac de l'Eau d'Heure",
+                "Wallonie",
                 "25 Pilotes",
                 "19.07",
               ].map((t, j) => (
@@ -134,7 +134,7 @@ export default function Home() {
             </div>
             <div className="md:col-span-7">
               <p className="font-body text-zinc-300 text-lg leading-relaxed max-w-xl">
-                Une balade entre passionnés autour du Lac de l'Eau d'Heure.
+                Une balade entre passionnés à travers la Wallonie.
                 Convoi M, points de vue, et un format intime — pas un meet de parking.
               </p>
               <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.25em] text-zinc-500">
@@ -194,7 +194,7 @@ export default function Home() {
             </h2>
             <p className="mt-6 text-zinc-400 max-w-2xl font-body">
               Remplis le formulaire ci-dessous. On te recontacte par téléphone pour valider ta place et te donner
-              le point de ralliement précis autour du Lac de l'Eau d'Heure le 19 juillet.
+              le point de ralliement précis en Wallonie le 19 juillet.
             </p>
 
             <div
@@ -225,7 +225,7 @@ export default function Home() {
             MW<span className="text-[#E2252B]">/</span>CREW · Édition 03
           </div>
           <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-600">
-            19.07 · Lac de l'Eau d'Heure · BMW M Only
+            19.07 · Wallonie · BMW M Only
           </div>
         </div>
       </footer>
