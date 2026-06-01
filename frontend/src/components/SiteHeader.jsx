@@ -21,6 +21,13 @@ export default function SiteHeader() {
             Édition 03 · 19.07
           </span>
           <a
+            href="#galerie"
+            className="hidden md:inline font-mono text-xs uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
+            data-testid="header-gallery"
+          >
+            Galerie
+          </a>
+          <a
             href="#inscription"
             className="font-mono text-xs uppercase tracking-[0.2em] text-white hover:text-[#E2252B] transition-colors"
             data-testid="header-cta"

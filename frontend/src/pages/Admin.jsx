@@ -182,6 +182,7 @@ export default function Admin() {
                 <th className="px-4 py-4">BMW</th>
                 <th className="px-4 py-4">Téléphone</th>
                 <th className="px-4 py-4">Intérêt</th>
+                <th className="px-4 py-4">Suggestion</th>
                 <th className="px-4 py-4">Photo</th>
                 <th className="px-4 py-4">Date</th>
                 <th className="px-4 py-4"></th>
@@ -191,7 +192,7 @@ export default function Admin() {
               {registrations.length === 0 && !fetching && (
                 <tr>
                   <td
-                    colSpan={8}
+                    colSpan={9}
                     className="px-4 py-16 text-center font-mono text-xs uppercase tracking-[0.2em] text-zinc-600"
                   >
                     Aucune inscription pour le moment.
@@ -212,6 +213,15 @@ export default function Admin() {
                   <td className="px-4 py-4 font-mono text-xs text-zinc-400">{r.telephone}</td>
                   <td className="px-4 py-4 font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-300">
                     {interestLabel(r.interet)}
+                  </td>
+                  <td className="px-4 py-4 font-body text-xs text-zinc-300 max-w-[220px]">
+                    {r.suggestion ? (
+                      <span className="line-clamp-3" title={r.suggestion}>
+                        {r.suggestion}
+                      </span>
+                    ) : (
+                      <span className="font-mono text-[10px] text-zinc-600">—</span>
+                    )}
                   </td>
                   <td className="px-4 py-4">
                     {r.photo_base64 ? (

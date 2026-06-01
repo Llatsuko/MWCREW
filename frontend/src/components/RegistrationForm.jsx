@@ -19,6 +19,7 @@ export default function RegistrationForm({ soldOut, onSuccess }) {
   const [modele, setModele] = useState("");
   const [telephone, setTelephone] = useState("");
   const [interet, setInteret] = useState("les_deux");
+  const [suggestion, setSuggestion] = useState("");
   const [photoFile, setPhotoFile] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);
   const [submitting, setSubmitting] = useState(false);
@@ -63,6 +64,7 @@ export default function RegistrationForm({ soldOut, onSuccess }) {
         modele_bmw: modele.trim(),
         telephone: telephone.trim(),
         interet,
+        suggestion: suggestion.trim() || null,
         photo_base64,
       });
       setDone(res);
@@ -198,14 +200,17 @@ export default function RegistrationForm({ soldOut, onSuccess }) {
       </div>
 
       <div className="mt-10">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-400 mb-4">
-          Prochaines éditions — serais-tu prêt·e à payer pour ?
+        <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-zinc-500 mb-1">
+          La suite de MWCREW ?
+        </p>
+        <p className="font-heading text-2xl md:text-3xl uppercase text-white mb-5 leading-tight">
+          Quel format t'intéresserait pour une prochaine édition ?
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {[
-            { v: "1_jour", label: "1 journée", sub: "Visites + restaurant" },
-            { v: "2_jours", label: "2 jours", sub: "Avec hôtel inclus" },
-            { v: "les_deux", label: "Les deux", sub: "1 jour & 2 jours" },
+            { v: "1_jour", label: "1 journée", sub: "Petit-déj + restaurant" },
+            { v: "2_jours", label: "Weekend 2 jours", sub: "Hôtel + resto + petit-déj" },
+            { v: "les_deux", label: "Les deux", sub: "1 jour & weekend" },
             { v: "aucun", label: "Aucun", sub: "Juste cette édition" },
           ].map((opt) => (
             <button
@@ -229,6 +234,29 @@ export default function RegistrationForm({ soldOut, onSuccess }) {
               </div>
             </button>
           ))}
+        </div>
+
+        <div className="mt-6">
+          <label
+            htmlFor="suggestion-input"
+            className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-400 block mb-2"
+          >
+            Une autre idée ? Dis-nous ce que tu aimerais faire
+            <span className="text-zinc-600 normal-case tracking-normal ml-2">(optionnel)</span>
+          </label>
+          <textarea
+            id="suggestion-input"
+            value={suggestion}
+            onChange={(e) => setSuggestion(e.target.value)}
+            placeholder="Ex. circuit, sortie nocturne, weekend Nürburgring, photoshoot…"
+            rows={3}
+            maxLength={1000}
+            data-testid="input-suggestion"
+            className="w-full bg-[#0A0A0A] border border-zinc-800 text-white p-4 outline-none focus:border-white font-body text-sm resize-none"
+          />
+          <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-600 text-right">
+            {suggestion.length}/1000
+          </div>
         </div>
       </div>
 

@@ -37,6 +37,7 @@ class RegistrationCreate(BaseModel):
     photo_base64: Optional[str] = Field(default=None)  # data:image/...;base64,...
     telephone: str = Field(..., min_length=4, max_length=40)
     interet: str = Field(..., pattern="^(aucun|1_jour|2_jours|les_deux)$")
+    suggestion: Optional[str] = Field(default=None, max_length=1000)
 
 
 class Registration(BaseModel):
@@ -48,6 +49,7 @@ class Registration(BaseModel):
     photo_base64: Optional[str] = None
     telephone: str
     interet: str
+    suggestion: Optional[str] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 

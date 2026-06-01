@@ -12,6 +12,14 @@ const EDITION_1 =
 const EDITION_2 =
   "https://customer-assets.emergentagent.com/job_60a2cc6e-e4c5-4b8a-aec5-19fd957b8916/artifacts/0fheyuar_IMG_2712.jpeg";
 
+const EDITION_1_GALLERY = [
+  "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/hce78339_IMG_8766.jpeg",
+  "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/12xhoxg5_IMG_8767.jpeg",
+  "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/7m29t13w_IMG_8785.jpeg",
+  "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/sh6jff1h_IMG_8797.jpeg",
+  "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/ft2ei7w4_IMG_8815%281%29.jpeg",
+];
+
 export default function Home() {
   const [soldOut, setSoldOut] = useState(false);
 
@@ -179,6 +187,58 @@ export default function Home() {
               testid="edition-2"
             />
           </div>
+        </div>
+      </section>
+
+      {/* GALLERY — Édition 1 */}
+      <section
+        id="galerie"
+        className="py-24 md:py-32 bg-[#0A0A0A]"
+        data-testid="gallery-section"
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="flex items-end justify-between flex-wrap gap-6 mb-12">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.3em] text-zinc-500 mb-4">
+                Galerie · Édition 01
+              </p>
+              <h2 className="font-heading text-4xl md:text-5xl uppercase leading-[0.95]">
+                Les images de la
+                <br />
+                <span className="text-zinc-500">première sortie.</span>
+              </h2>
+            </div>
+            <p className="font-body text-zinc-400 max-w-md">
+              Quelques instantanés de la première édition du MWCREW.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {EDITION_1_GALLERY.map((src, i) => (
+              <a
+                key={src}
+                href={src}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid={`gallery-photo-${i + 1}`}
+                className={`group relative overflow-hidden border border-zinc-800 hover:border-white transition-colors ${
+                  i === 0 ? "col-span-2 row-span-2 aspect-square md:aspect-[4/3]" : "aspect-square"
+                }`}
+              >
+                <img
+                  src={src}
+                  alt={`MWCREW Édition 01 — ${i + 1}`}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute top-3 left-3 bg-[#0A0A0A]/80 backdrop-blur px-2 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                  {String(i + 1).padStart(2, "0")} / {String(EDITION_1_GALLERY.length).padStart(2, "0")}
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div className="m-stripe h-[3px] w-32 mt-16" />
         </div>
       </section>
 
