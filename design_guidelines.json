@@ -1,0 +1,86 @@
+{
+  "project_metadata": {
+    "name": "MWCREW",
+    "theme": "dark",
+    "archetype": "Luxury (5) + Swiss & High-Contrast (4) for a premium BMW M automotive aesthetic",
+    "description": "Exclusive automotive event registration site for a 25-car limit MWCREW rally."
+  },
+  "typography": {
+    "font_families": {
+      "heading": "Oswald, sans-serif",
+      "mono": "IBM Plex Mono, monospace",
+      "body": "Manrope, sans-serif"
+    },
+    "hierarchy": {
+      "h1": "text-5xl sm:text-7xl lg:text-8xl tracking-tight uppercase font-heading",
+      "h2": "text-4xl sm:text-5xl lg:text-6xl tracking-tight uppercase font-heading",
+      "h3": "text-2xl sm:text-3xl font-heading uppercase",
+      "overline": "text-xs sm:text-sm tracking-[0.2em] uppercase font-mono text-zinc-400",
+      "body": "text-base text-zinc-300 font-body leading-relaxed"
+    }
+  },
+  "colors": {
+    "background": {
+      "primary": "#0A0A0A",
+      "secondary": "#121212",
+      "overlay": "rgba(10, 10, 10, 0.7)"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A3A3A3",
+      "accent": "#E2252B"
+    },
+    "accents": {
+      "m_blue_light": "#00A1E4",
+      "m_blue_dark": "#012169",
+      "m_red": "#E2252B",
+      "usage": "Use these three BMW M colors EXTREMELY sparingly. E.g., a tiny 3px decorative line on top of the hero, or as a subtle hover border on the submit button. NEVER use as large backgrounds."
+    }
+  },
+  "layout_and_spacing": {
+    "philosophy": "Massive negative space. Cinematic, moody. Grid layouts for gallery. Forms should look technical and strict.",
+    "container": "max-w-7xl mx-auto px-6 md:px-12",
+    "sections": "Use generous vertical spacing (py-24 or py-32) between major sections."
+  },
+  "components": {
+    "buttons": "Square edges. High contrast. Default: bg-white text-black hover:bg-zinc-200. Add tactile click animations.",
+    "inputs": "Shadcn UI heavily customized. Minimalist dark theme: bg-zinc-900 border-zinc-800 text-white focus:border-white focus:ring-0. Square corners. No heavy shadows.",
+    "cards": "Flat, sharp edges, 1px subtle border (border-zinc-800/50), no drop shadows, background very dark grey (#121212)."
+  },
+  "media": {
+    "hero_bg": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/60a2cc6e-e4c5-4b8a-aec5-19fd957b8916/images/29fc240cc135f55c29874977ca25765ecaa10367e61ef704412cf247290c3c13.png",
+      "description": "Dark, moody texture for hero background.",
+      "usage": "Background image for hero section. Ensure it has a black gradient overlay (e.g. bg-black/60) to make white text completely legible."
+    },
+    "gallery_edition_1": {
+      "url": "https://customer-assets.emergentagent.com/job_60a2cc6e-e4c5-4b8a-aec5-19fd957b8916/artifacts/grl73ji0_IMG_0942.jpeg",
+      "description": "First edition cars at a roundabout.",
+      "usage": "Use in 'Éditions Précédentes' gallery. Label as 'Édition 1'."
+    },
+    "gallery_edition_2": {
+      "url": "https://customer-assets.emergentagent.com/job_60a2cc6e-e4c5-4b8a-aec5-19fd957b8916/artifacts/0fheyuar_IMG_2712.jpeg",
+      "description": "Second edition cars at airfield.",
+      "usage": "Use in 'Éditions Précédentes' gallery. Label as 'Édition 2'."
+    }
+  },
+  "functional_requirements": {
+    "language": "French",
+    "core_features": [
+      "Hero section featuring 'MWCREW', 'Édition 3', '19 Juillet', 'Lac de l\\'Eau d\\'Heure'.",
+      "A prominent counter displaying '25 PLACES LIMITÉES'.",
+      "Gallery section displaying Édition 1 and Édition 2 using the provided media URLs.",
+      "Registration Form containing these fields: Prénom, Modèle BMW, Photo de la voiture (upload/file input), Numéro de téléphone, Intérêt pour les prochaines éditions (Radio or Checkbox: '1 journée (visites, restaurant)' vs '2 jours (avec hôtel)').",
+      "Success state displayed after successful form submission.",
+      "Admin Page (route /admin) protected by a simple password (mocked or simple env check) to view a table of all registrations."
+    ],
+    "testing": "All interactive elements (buttons, inputs, forms) MUST include a 'data-testid' attribute."
+  },
+  "instructions_to_main_agent": [
+    "Install Oswald, IBM Plex Mono, and Manrope fonts.",
+    "Use pure HTML/Tailwind for the landing page layout and Shadcn UI (customized to be dark/minimalist) for the form elements.",
+    "Do NOT use pure black (#000000) for the background, use #0A0A0A.",
+    "Ensure the hero background image has sufficient overlay (e.g., bg-black/60) to maintain high contrast for the text.",
+    "Implement the 25 places limit logic (can mock the database for now if backend not fully setup, but define the state clearly)."
+  ]
+}
