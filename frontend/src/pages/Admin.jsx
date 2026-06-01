@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import {
@@ -18,7 +18,7 @@ export default function Admin() {
   const [fetching, setFetching] = useState(false);
   const [photoModal, setPhotoModal] = useState(null);
 
-  const fetchAll = async (t) => {
+  const fetchAll = useCallback(async (t) => {
     setFetching(true);
     try {
       const data = await adminListRegistrations(t);
@@ -34,11 +34,11 @@ export default function Admin() {
     } finally {
       setFetching(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     if (token) fetchAll(token);
-  }, [token]);
+  }, [token, fetchAll]);
 
   const submitLogin = async (e) => {
     e.preventDefault();

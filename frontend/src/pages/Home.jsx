@@ -23,7 +23,9 @@ export default function Home() {
       setCount(data.count);
       setMax(data.max_places);
       setSoldOut(data.sold_out);
-    } catch (_) {}
+    } catch (err) {
+      console.error("Failed to fetch registrations count:", err);
+    }
   }, []);
 
   useEffect(() => {

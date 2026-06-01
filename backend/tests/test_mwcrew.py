@@ -4,7 +4,7 @@ import requests
 
 BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'https://bmw-mwcrew-hub.preview.emergentagent.com').rstrip('/')
 API = f"{BASE_URL}/api"
-ADMIN_PASSWORD = "mwcrew2025"
+ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'mwcrew2025')
 
 
 @pytest.fixture(scope="module")
@@ -153,7 +153,7 @@ def test_sold_out_limit(s, admin_token):
     assert r.status_code == 409
 
     cdata = s.get(f"{API}/registrations/count").json()
-    assert cdata["sold_out"] is True
+    assert cdata["sold_out"] == True
     assert cdata["places_restantes"] == 0
 
     # cleanup these to keep space for demo
