@@ -175,7 +175,7 @@ export default function Home() {
               n="02"
               year="Deuxième édition"
               src={EDITION_2}
-              caption="Le crew s'élargit. Quatorze M sur tarmac, blackout dominant."
+              caption="Le crew s'élargit. Dix-sept M sur tarmac, blackout dominant."
               testid="edition-2"
             />
           </div>
