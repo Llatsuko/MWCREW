@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function SiteHeader({ count, max }) {
+export default function SiteHeader() {
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0A0A0A]/70 border-b border-zinc-900"
@@ -17,18 +17,9 @@ export default function SiteHeader({ count, max }) {
         </Link>
 
         <div className="flex items-center gap-6">
-          {typeof count === "number" && (
-            <div
-              className="hidden sm:flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-zinc-400"
-              data-testid="header-counter"
-            >
-              <span className="inline-block w-2 h-2 bg-[#E2252B]" />
-              <span>
-                <span className="text-white">{count.toString().padStart(2, "0")}</span>
-                <span className="text-zinc-600"> / {max}</span> places
-              </span>
-            </div>
-          )}
+          <span className="hidden sm:inline font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+            Édition 03 · 19.07
+          </span>
           <a
             href="#inscription"
             className="font-mono text-xs uppercase tracking-[0.2em] text-white hover:text-[#E2252B] transition-colors"

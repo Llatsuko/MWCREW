@@ -19,7 +19,7 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-MAX_PLACES = 25
+MAX_PLACES = 30
 ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'mwcrew2025')
 ADMIN_TOKEN = os.environ.get('ADMIN_TOKEN', 'mwcrew-admin-secret-token')
 

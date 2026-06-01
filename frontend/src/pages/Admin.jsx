@@ -161,7 +161,7 @@ export default function Admin() {
             </p>
             <h1 className="font-heading text-5xl md:text-6xl uppercase">
               {String(registrations.length).padStart(2, "0")}
-              <span className="text-zinc-600"> / 25</span>
+              <span className="text-zinc-600"> / 30</span>
             </h1>
           </div>
           <button

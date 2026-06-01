@@ -13,15 +13,11 @@ const EDITION_2 =
   "https://customer-assets.emergentagent.com/job_60a2cc6e-e4c5-4b8a-aec5-19fd957b8916/artifacts/0fheyuar_IMG_2712.jpeg";
 
 export default function Home() {
-  const [count, setCount] = useState(0);
-  const [max, setMax] = useState(25);
   const [soldOut, setSoldOut] = useState(false);
 
   const refresh = useCallback(async () => {
     try {
       const data = await getCount();
-      setCount(data.count);
-      setMax(data.max_places);
       setSoldOut(data.sold_out);
     } catch (err) {
       console.error("Failed to fetch registrations count:", err);
@@ -32,12 +28,9 @@ export default function Home() {
     refresh();
   }, [refresh]);
 
-  const remaining = Math.max(max - count, 0);
-  const progressPct = Math.min((count / max) * 100, 100);
-
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white" data-testid="home-page">
-      <SiteHeader count={count} max={max} />
+      <SiteHeader />
 
       {/* HERO */}
       <section
@@ -65,7 +58,7 @@ export default function Home() {
           >
             MWCREW
             <br />
-            <span className="text-zinc-500">Rassemblement</span>
+            <span className="text-zinc-500">Balade</span>
           </h1>
 
           <div className="mt-10 grid sm:grid-cols-3 gap-6 max-w-4xl fade-up-delay-2">
@@ -75,9 +68,8 @@ export default function Home() {
             <InfoBlock icon={<MapPin className="w-4 h-4" />} label="Lieu">
               Lac de l'Eau d'Heure
             </InfoBlock>
-            <InfoBlock label="Places" mono>
-              <span className="text-white">{String(count).padStart(2, "0")}</span>
-              <span className="text-zinc-600"> / {max}</span>
+            <InfoBlock label="Format">
+              BMW M Only
             </InfoBlock>
           </div>
 
@@ -126,47 +118,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* COUNTER / PLACES */}
+      {/* PLACES — info only, no live counter */}
       <section className="py-24 md:py-32" data-testid="places-section">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid md:grid-cols-12 gap-12 items-end">
             <div className="md:col-span-5">
               <p className="font-mono text-xs uppercase tracking-[0.3em] text-zinc-500 mb-4">
-                01 — Places limitées
+                01 — Format
               </p>
               <h2 className="font-heading text-5xl md:text-6xl uppercase leading-[0.95]">
-                25 voitures.
+                Balade privée.
                 <br />
-                <span className="text-zinc-500">Pas une de plus.</span>
+                <span className="text-zinc-500">Places limitées.</span>
               </h2>
             </div>
             <div className="md:col-span-7">
-              <div className="flex items-baseline gap-6 mb-6">
-                <span
-                  className="font-heading text-[120px] md:text-[180px] leading-none text-white"
-                  data-testid="counter-remaining"
-                >
-                  {String(remaining).padStart(2, "0")}
-                </span>
-                <div className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-400">
-                  places
-                  <br />
-                  restantes
-                </div>
-              </div>
-              <div
-                className="h-[2px] w-full bg-zinc-900 relative overflow-hidden"
-                aria-label={`${count} sur ${max} inscrits`}
-              >
-                <div
-                  className="absolute inset-y-0 left-0 bg-white transition-all duration-700"
-                  style={{ width: `${progressPct}%` }}
-                />
-              </div>
-              <div className="mt-3 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-500">
-                <span>{String(count).padStart(2, "0")} inscrit·e·s</span>
-                <span>{max} max</span>
-              </div>
+              <p className="font-body text-zinc-300 text-lg leading-relaxed max-w-xl">
+                Une balade entre passionnés autour du Lac de l'Eau d'Heure.
+                Convoi M, points de vue, et un format intime — pas un meet de parking.
+              </p>
+              <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.25em] text-zinc-500">
+                Sur inscription · BMW M uniquement · Confirmation par téléphone
+              </p>
+              <div className="m-stripe h-[3px] w-32 mt-10" />
             </div>
           </div>
         </div>
@@ -251,7 +225,7 @@ export default function Home() {
             MW<span className="text-[#E2252B]">/</span>CREW · Édition 03
           </div>
           <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-600">
-            19.07 · Lac de l'Eau d'Heure · 25 places
+            19.07 · Lac de l'Eau d'Heure · BMW M Only
           </div>
         </div>
       </footer>

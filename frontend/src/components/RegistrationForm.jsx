@@ -66,7 +66,7 @@ export default function RegistrationForm({ soldOut, onSuccess }) {
         photo_base64,
       });
       setDone(res);
-      toast.success(`Place #${res.place_numero} confirmée. Bienvenue ${res.prenom}.`);
+      toast.success(`Inscription confirmée. Bienvenue ${res.prenom}.`);
       onSuccess?.();
     } catch (err) {
       const msg = err?.response?.data?.detail || "Une erreur est survenue.";
@@ -94,9 +94,8 @@ export default function RegistrationForm({ soldOut, onSuccess }) {
           Bienvenue dans la crew, {done.prenom}.
         </h3>
         <p className="text-zinc-400 font-body max-w-xl">
-          Tu as la place <span className="text-white font-mono">#{String(done.place_numero).padStart(2, "0")}</span>
-          {" "}sur 25 pour l'Édition 3 du 19 juillet, autour du Lac de l'Eau d'Heure.
-          On revient vers toi par téléphone avec tous les détails.
+          Ton inscription est bien enregistrée pour l'Édition 3 du 19 juillet, autour du Lac de l'Eau d'Heure.
+          On revient vers toi par téléphone avec tous les détails du point de rendez-vous.
         </p>
         <div className="m-stripe h-[3px] w-24 mt-10" />
       </div>
@@ -113,10 +112,10 @@ export default function RegistrationForm({ soldOut, onSuccess }) {
           Complet
         </p>
         <h3 className="font-heading text-4xl md:text-5xl uppercase mb-3">
-          Les 25 places sont prises.
+          Inscriptions clôturées.
         </h3>
         <p className="text-zinc-400 font-body">
-          Reviens pour l'Édition 4. Tu peux aussi nous contacter pour être en liste d'attente.
+          La balade affiche complet. Reviens pour l'Édition 4, ou contacte-nous pour être en liste d'attente.
         </p>
       </div>
     );
