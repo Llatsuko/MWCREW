@@ -107,8 +107,9 @@ export default function Home() {
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex items-center gap-10 px-10 shrink-0">
               {[
-                "BMW M3",
-                "BMW M4",
+                "BMW M Only",
+                "1M · M2 · M3 · M4",
+                "M5 · M6 · M8",
                 "M Power",
                 "Édition 03",
                 "Lac de l'Eau d'Heure",
@@ -221,6 +222,22 @@ export default function Home() {
               Remplis le formulaire ci-dessous. On te recontacte par téléphone pour valider ta place et te donner
               le point de ralliement précis autour du Lac de l'Eau d'Heure le 19 juillet.
             </p>
+
+            <div
+              className="mt-8 border border-[#E2252B]/50 bg-[#E2252B]/5 px-5 py-4 flex items-start gap-4"
+              data-testid="m-only-notice"
+            >
+              <div className="m-stripe h-10 w-[3px] shrink-0" />
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#E2252B] mb-1">
+                  M Power Only
+                </p>
+                <p className="font-body text-sm text-zinc-300">
+                  Réservé exclusivement aux BMW M : <span className="text-white font-medium">1M, M2, M3, M4, M5, M6, M8</span>.
+                  Les modèles M Performance (M135i, M235i, M340i, M440i…) ne sont pas acceptés.
+                </p>
+              </div>
+            </div>
           </div>
 
           <RegistrationForm soldOut={soldOut} onSuccess={refresh} />

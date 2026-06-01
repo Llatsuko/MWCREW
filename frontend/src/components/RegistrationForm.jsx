@@ -142,12 +142,12 @@ export default function RegistrationForm({ soldOut, onSuccess }) {
           />
         </Field>
 
-        <Field label="Modèle BMW" required>
+        <Field label="Modèle BMW" required hint="1M · M2 · M3 · M4 · M5 · M6 · M8">
           <input
             type="text"
             value={modele}
             onChange={(e) => setModele(e.target.value)}
-            placeholder="ex. M3 G80, M4 F82, M340i…"
+            placeholder="ex. M3 G80, M4 F82, M2 G87…"
             className="form-input"
             data-testid="input-modele"
             required
