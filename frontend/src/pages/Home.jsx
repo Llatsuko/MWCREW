@@ -2,26 +2,49 @@ import { useEffect, useState, useCallback } from "react";
 import { getCount } from "@/lib/api";
 import SiteHeader from "@/components/SiteHeader";
 import RegistrationForm from "@/components/RegistrationForm";
+import GalleryModal from "@/components/GalleryModal";
+import ContactModal from "@/components/ContactModal";
 import { MapPin, Calendar, ArrowDown } from "lucide-react";
 
 const HERO_BG =
   "https://static.prod-images.emergentagent.com/jobs/60a2cc6e-e4c5-4b8a-aec5-19fd957b8916/images/29fc240cc135f55c29874977ca25765ecaa10367e61ef704412cf247290c3c13.png";
 
 const EDITION_1 =
-  "https://customer-assets.emergentagent.com/job_60a2cc6e-e4c5-4b8a-aec5-19fd957b8916/artifacts/grl73ji0_IMG_0942.jpeg";
+  "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/inxrumys_IMG_0942.jpeg";
 const EDITION_2 =
-  "https://customer-assets.emergentagent.com/job_60a2cc6e-e4c5-4b8a-aec5-19fd957b8916/artifacts/0fheyuar_IMG_2712.jpeg";
+  "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/l4xov445_IMG_2712.jpeg";
 
-const EDITION_1_GALLERY = [
-  "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/hce78339_IMG_8766.jpeg",
-  "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/12xhoxg5_IMG_8767.jpeg",
-  "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/7m29t13w_IMG_8785.jpeg",
-  "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/sh6jff1h_IMG_8797.jpeg",
-  "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/ft2ei7w4_IMG_8815%281%29.jpeg",
+const EDITIONS = [
+  {
+    id: "edition-1",
+    label: "Édition 01",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/inxrumys_IMG_0942.jpeg",
+      "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/hce78339_IMG_8766.jpeg",
+      "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/12xhoxg5_IMG_8767.jpeg",
+      "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/7m29t13w_IMG_8785.jpeg",
+      "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/sh6jff1h_IMG_8797.jpeg",
+      "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/ft2ei7w4_IMG_8815%281%29.jpeg",
+    ],
+  },
+  {
+    id: "edition-2",
+    label: "Édition 02",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/l4xov445_IMG_2712.jpeg",
+      "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/vee3z9be__DSC0379.jpeg",
+      "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/j3naqmjy__DSC0267.jpeg",
+      "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/koevg6aw__DSC0253.jpeg",
+      "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/tv486e20_IMG_2704.jpeg",
+      "https://customer-assets.emergentagent.com/job_bmw-mwcrew-hub/artifacts/z0t8q1nx__DSC0083.jpeg",
+    ],
+  },
 ];
 
 export default function Home() {
   const [soldOut, setSoldOut] = useState(false);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
   const refresh = useCallback(async () => {
     try {
@@ -38,7 +61,17 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white" data-testid="home-page">
-      <SiteHeader />
+      <SiteHeader
+        onOpenGallery={() => setGalleryOpen(true)}
+        onOpenContact={() => setContactOpen(true)}
+      />
+
+      <GalleryModal
+        open={galleryOpen}
+        onClose={() => setGalleryOpen(false)}
+        editions={EDITIONS}
+      />
+      <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
 
       {/* HERO */}
       <section
@@ -178,6 +211,7 @@ export default function Home() {
               src={EDITION_1}
               caption="Première sortie officielle. Format intime, alignement parfait."
               testid="edition-1"
+              onOpen={() => setGalleryOpen(true)}
             />
             <EditionCard
               n="02"
@@ -185,60 +219,12 @@ export default function Home() {
               src={EDITION_2}
               caption="Le crew s'élargit. Dix-sept M sur tarmac, blackout dominant."
               testid="edition-2"
+              onOpen={() => setGalleryOpen(true)}
             />
           </div>
-        </div>
-      </section>
-
-      {/* GALLERY — Édition 1 */}
-      <section
-        id="galerie"
-        className="py-24 md:py-32 bg-[#0A0A0A]"
-        data-testid="gallery-section"
-      >
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex items-end justify-between flex-wrap gap-6 mb-12">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.3em] text-zinc-500 mb-4">
-                Galerie · Édition 01
-              </p>
-              <h2 className="font-heading text-4xl md:text-5xl uppercase leading-[0.95]">
-                Les images de la
-                <br />
-                <span className="text-zinc-500">première sortie.</span>
-              </h2>
-            </div>
-            <p className="font-body text-zinc-400 max-w-md">
-              Quelques instantanés de la première édition du MWCREW.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-            {EDITION_1_GALLERY.map((src, i) => (
-              <a
-                key={src}
-                href={src}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-testid={`gallery-photo-${i + 1}`}
-                className={`group relative overflow-hidden border border-zinc-800 hover:border-white transition-colors ${
-                  i === 0 ? "col-span-2 row-span-2 aspect-square md:aspect-[4/3]" : "aspect-square"
-                }`}
-              >
-                <img
-                  src={src}
-                  alt={`MWCREW Édition 01 — ${i + 1}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute top-3 left-3 bg-[#0A0A0A]/80 backdrop-blur px-2 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                  {String(i + 1).padStart(2, "0")} / {String(EDITION_1_GALLERY.length).padStart(2, "0")}
-                </div>
-              </a>
-            ))}
-          </div>
-
-          <div className="m-stripe h-[3px] w-32 mt-16" />
+          <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-500">
+            Clique sur une édition pour voir toute la galerie.
+          </p>
         </div>
       </section>
 
@@ -311,10 +297,15 @@ function InfoBlock({ icon, label, children, mono }) {
   );
 }
 
-function EditionCard({ n, year, src, caption, testid }) {
+function EditionCard({ n, year, src, caption, testid, onOpen }) {
   return (
-    <figure className="group" data-testid={testid}>
-      <div className="relative overflow-hidden border border-zinc-800 aspect-[4/3]">
+    <button
+      type="button"
+      onClick={onOpen}
+      className="group text-left w-full block cursor-pointer"
+      data-testid={testid}
+    >
+      <div className="relative overflow-hidden border border-zinc-800 group-hover:border-white transition-colors aspect-[4/3]">
         <img
           src={src}
           alt={year}
@@ -323,8 +314,11 @@ function EditionCard({ n, year, src, caption, testid }) {
         <div className="absolute top-4 left-4 bg-[#0A0A0A]/80 backdrop-blur px-3 py-1 font-mono text-[11px] uppercase tracking-[0.25em] text-white">
           Édition {n}
         </div>
+        <div className="absolute bottom-4 right-4 bg-white text-black px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] opacity-0 group-hover:opacity-100 transition-opacity">
+          Voir la galerie →
+        </div>
       </div>
-      <figcaption className="mt-4 flex items-start justify-between gap-6">
+      <div className="mt-4 flex items-start justify-between gap-6">
         <div>
           <div className="font-heading text-2xl uppercase">{year}</div>
           <div className="font-body text-sm text-zinc-400 mt-1 max-w-md">{caption}</div>
@@ -332,7 +326,7 @@ function EditionCard({ n, year, src, caption, testid }) {
         <div className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-600 shrink-0">
           / {n}
         </div>
-      </figcaption>
-    </figure>
+      </div>
+    </button>
   );
 }
